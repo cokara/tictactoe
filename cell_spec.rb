@@ -96,6 +96,8 @@ describe Tictactoe do
 
     it "should not be playable" do
       game.playable?.should == false
+      game.play(7,'O').should == false
+      game.grid[7].value.should == nil
     end
 
     it "should know which value won" do

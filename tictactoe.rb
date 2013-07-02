@@ -9,7 +9,6 @@ class Cell
 
 end
 
-
 class Tictactoe
 
   attr_accessor :grid
@@ -32,7 +31,7 @@ class Tictactoe
   end
 
   def play(index, value)
-    if grid[index].value.nil?
+    if grid[index].value.nil? && playable?
       grid[index].value = value
       true
     else

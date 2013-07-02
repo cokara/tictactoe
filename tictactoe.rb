@@ -14,12 +14,52 @@ class Tictactoe
 
   attr_accessor :grid
 
+  WINNING_COMBINATIONS = [[0,1,2],
+                          [0,4,8],
+                          [0,3,6],
+                          [1,4,7],
+                          [2,4,6],
+                          [2,5,8],
+                          [3,4,5],
+                          [6,7,8]]
+
   def initialize
     ar = []
     9.times do
       ar << Cell.new
     end
     @grid = ar
+  end
+
+  def play(index, value)
+    if grid[index].value.nil?
+      grid[index].value = value
+      true
+    else
+      false
+    end
+  end
+
+  def winner
+    return @winner if @winner
+    WINNING_COMBINATIONS.detect do |(i,j,k)|
+      if grid[i].value == grid[j].value && grid[j].value == grid[k].value
+        @winner = grid[i].value
+      end
+    end
+    @winner
+  end
+
+  def is_won?
+    !winner.nil?
+  end
+
+  def playable?
+    if is_won? || grid.detect{|c| c.value.nil? }.nil?
+      false
+    else
+      true
+    end
   end
 
   def grid_string

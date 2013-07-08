@@ -21,7 +21,7 @@ describe Tictactoe do
     t.grid.last.should be_an_instance_of(Cell)
   end
 
-  context "An new game" do
+  context "A new game" do
     it 'should build grid string correctly' do
       t = Tictactoe.new
       t.grid_string.should == "+-----------+\n" +
@@ -35,7 +35,7 @@ describe Tictactoe do
     end
   end
 
-  context "An game in progress" do
+  context "A game in progress" do
     let(:game) do
       t = Tictactoe.new
       t.grid[0].value = 'X'
@@ -67,7 +67,7 @@ describe Tictactoe do
       game.grid[1].value.should == 'O'
     end
 
-    it "knowd when a game is won" do
+    it "knows when a game is won" do
       game.is_won?.should == false
     end
 
@@ -75,8 +75,8 @@ describe Tictactoe do
       game.playable?.should == true
     end
 
-    it "should know which value won" do
-      game.winner.should == nil
+    it "should know all empty cells" do
+      game.empty_cell_array.should == [1,2,3,5,6,7]
     end
   end
 

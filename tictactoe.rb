@@ -61,6 +61,14 @@ class Tictactoe
     end
   end
 
+  def empty_cell_array
+    ar = []
+    grid.each_with_index do |cell, i|
+      ar << i if cell.value.nil?
+    end
+    ar
+  end
+
   def grid_string
     grid_map = (0..8).to_a.group_by{|i| (0 + i)/3 }
     horizontal = "+-----------+\n"
